@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Office.Interop.Word;
 
-namespace ConsoleApplication1
+namespace DocxToPdfCoverter
 {
     class DocxConverter : DocxToPdfRepository
     {
@@ -68,7 +68,7 @@ namespace ConsoleApplication1
 
             if (emptyDir == true)
             {
-                Console.WriteLine("There are not new documents to covert!");
+                Console.WriteLine("There are not documents to covert!");
                 Console.WriteLine("___________________________________________________");
                 Console.WriteLine("\nPress ENTER to EXIT!");
             }

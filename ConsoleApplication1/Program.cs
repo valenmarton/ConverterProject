@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-
 
 //FONTOS!!!
 //Ha CMD-ből futtatod, vedd ki a Console.ReadLine-t a végéről, különben nem fog tovább futni a scripted !
-namespace ConsoleApplication1
+namespace DocxToPdfCoverter
 {
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
             //ha nincs Main() argumentum standard inputról olvasás, 
             //egyébként a command line argumentumok olvasása (beágyazott rendszer miatt)
             //line = a sor mappája, amit rekurzívan konvertálni szeretnél
@@ -35,18 +28,21 @@ namespace ConsoleApplication1
             }
             else if (args.Length == 1)
             {
+                DocxConverter.line = args[0];
                 DocxConverter.staticPath = "\\Documentations\\Instructions\\Work_instructions\\";
                 string rootPath = DocxConverter.path;
                 DocxConverter docObj = new DocxConverter(rootPath);
 
-                docObj.docxToPdfWithOneParameter(args[0].ToUpper());
+                docObj.docxToPdfWithOneParameter(DocxConverter.line.ToUpper());
             }
             else if (args.Length == 2)
             {
+                DocxConverter.line = args[0];
+                DocxConverter.station = args[1];
                 DocxConverter.path = @"\\sgmscfs01\SGHU_TEF_Cloud$\Starter\" + DocxConverter.line + "\\" + DocxConverter.station + "\\Documentations\\Instructions\\Work_instructions\\";
                 string rootPath = DocxConverter.path;
                 DocxConverter docObj = new DocxConverter(rootPath);
-                docObj.docxToPdf(args[0].ToUpper(), args[1].ToUpper());
+                docObj.docxToPdf(DocxConverter.station.ToUpper(), DocxConverter.station.ToUpper());
             }
             else
             {
